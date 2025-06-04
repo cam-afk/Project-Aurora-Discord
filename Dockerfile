@@ -1,36 +1,16 @@
-# ─────────────────────────────────────────────────────────────────────────────
-# 1) Pick a base image with Python 3.x (Debian slim is easier than Alpine)
-# ─────────────────────────────────────────────────────────────────────────────
-
+# 1. Use a lightweight Python base image
 FROM python:3.9-slim
 
+# 2. Set the working directory
+WORKDIR /app
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 2) Set a working directory inside the container
-# ─────────────────────────────────────────────────────────────────────────────
-
-WORKDIR /usr/src/app
-
-# ─────────────────────────────────────────────────────────────────────────────
-# 3) Copy requirements.txt into the image, so we can install deps first
-# ─────────────────────────────────────────────────────────────────────────────
-
+# 3. Copy required files
 COPY requirements.txt ./
-
-# ─────────────────────────────────────────────────────────────────────────────
-# 4) Install Python dependencies
-# ─────────────────────────────────────────────────────────────────────────────
-
 RUN pip install --no-cache-dir -r requirements.txt
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 5) Copy the rest of your bot’s code into the image
-# ─────────────────────────────────────────────────────────────────────────────
-
+# 4. Copy the rest of the bot's code into the image
 COPY . .
 
-# ─────────────────────────────────────────────────────────────────────────────
-# 6) Tell Docker which command to run when the container starts
-# ─────────────────────────────────────────────────────────────────────────────
+# 5. Set the command to run your bot
+CMD ["python", "bot/main.py"]
 
-CMD [ "python", "Project Aurora.py" ]
