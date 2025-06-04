@@ -13,6 +13,18 @@ import asyncio
 intents = discord.Intents.default()
 intents.message_content = True  # Enable message content intent
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+TOKEN = os.getenv("DISCORD_TOKEN")
+
+print(f"TOKEN from .env: {TOKEN}")
+
+
+###############################
+
+
 bot = commands.Bot(command_prefix='!', intents=intents) 
 
 @bot.event
@@ -44,13 +56,10 @@ async def timedallas(ctx):
 
     await ctx.message.delete()
 
-    dallas = pytx.timezone("Central/America") # set timezone for central america
+    dallas = pytx.timezone("Central/Detroit") # set timezone for central america
     now= datetime.now(dallas)
     formatted_time = now.strftime("%H:%M:%S")
 
     await ctx.send(f"{ctx.author.mention}, The current time in CST is: {formatted_time}")
 
-
-
-bot.run('MTI3MjYzODUzMDY2NDkyNzI0Mg.G9_yPW.t8CoLkHXQ2DY0V3g0GpnPMU2fzA_BUhyk3kktk')
-
+bot.run(TOKEN)
