@@ -13,7 +13,7 @@ async def timedylon(ctx):
     
     loading_msg = await ctx.send("Calculating Dylon's time...")
 
-    await asyncio.sleep(2)
+    await asyncio.sleep(1)
 
     await ctx.message.delete()  # Delete the command message
     await loading_msg.delete()
