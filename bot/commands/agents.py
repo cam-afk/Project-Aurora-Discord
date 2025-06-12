@@ -1,0 +1,1 @@
+agent_list = [ "Brimstone", "Viper", "Omen", "Astra", "Harbor", "Phoenix", "Jett", "Reyna", "Yoru", "Raze", "Neon", "Breach", "Skye", "KAY/O", "Fade", "Sova", "Cypher", "Killjoy", "Chamber", "Deadlock", "Gekko", "Iso", "Clove", "Sage"]
